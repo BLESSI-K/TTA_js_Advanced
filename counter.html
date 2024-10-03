@@ -26,7 +26,7 @@
         const decreaseButton =document.querySelector('#decreaseButton');
         
      increaseButton.addEventListener('click',() =>{
-       if(count<=10){
+       if(count < 10){
         count++;
         counter.textContent =count;
        }else{
@@ -34,7 +34,14 @@
        }
      })
 
-
+    decreaseButton.addEventListener('click',() =>{
+        if(count > 0){
+            count--;
+            counter.textContent =count;
+        }else{
+            alert('counter cannot be more than 0');
+        }
+    })
 
     </script>
 </body>
