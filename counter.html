@@ -18,13 +18,32 @@
         Increase
          </button>
     </div>
+      
+    
+    <div class="container flex flex-col w-1/3 mt-3 m-auto">
+        <div class="content-1 h-32 bg-red-500 my-3 ">
 
+        </div>
+
+        <div class="content-2 flex justify-around">
+             <button id="green" class="p2 bg-green-500">darkgreen</button>
+             <button  id="blue" class="p-2 bg-blue-500">darkblue</button>
+             <button  id="yellow" class="p-2 bg-yellow-500">darkyellow</button>
+             <button id="pink" class="p-2 bg-pink-500"> darkpink</button>
+        </div>
+    </div>
     <script>
         let count=0
         const counter =document.querySelector('#counter');
         const increaseButton =document.querySelector('#increaseButton');
-        const decreaseButton =document.querySelector('#decreaseButton');
-        
+        const decreaseButton =document.querySelector('#decreaseButton'); 
+
+        const greenButton =document.querySelector('#green')
+        const blueButton =document.querySelector('#blue')
+        const yellowButton =document.querySelector('#yellow')
+        const content1 =document.querySelector('.content-1')
+        const pink =document.querySelector('#pink')
+
      increaseButton.addEventListener('click',() =>{
        if(count < 10){
         count++;
@@ -42,7 +61,22 @@
             alert('counter cannot be more than 0');
         }
     })
+    greenButton.addEventListener('click',() =>{
+        content1.classList.toggle('bg-green-500');
+    })
 
+    blueButton.addEventListener('click',() =>{
+        content1.classList.toggle('bg-blue-500');
+    })
+
+    yellowButton.addEventListener('click',() =>{
+        content1.classList.toggle('bg-yellow-500');
+    })
+
+    pinkButton.addEventListener('click',() =>{
+        content1.classList.toggle('bg-pink-500');
+    
+    })
     </script>
 </body>
 </html>
