@@ -42,8 +42,15 @@
             button.addEventlistener ('click',() => {
              countIncrement++;
              if(countIncrement >7){
-                
+                counterElement.classlist.add('bg-red-500');
+             }else{
+                counterElement.classlist.remove('bg-red-500','bg-yellow-500');
+                counterElement.classlist.add('bg-green-500');
              }
+
+
+
+
              counterElement.textConntent = countIncrement;
          })
          }
