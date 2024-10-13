@@ -72,7 +72,38 @@ const addTask = () => {
         completedTasks.push(task);
         saveTaskToLocalStorage();
         displayTasks();
+        displayCompletedTasks();
     }
+
+    const displayCompletedTasks = () => {
+        const completedTasksSection = document.querySelector('#completedTasks');
+        const completedTaskDisplay = document.querySelector('#completedTaskDisplay');
+    
+        completedTaskDisplay.innerHTML = '';
+    
+        if (completedTasks.length > 0) {
+            completedTasksSection.classList.remove('hidden');
+        } else {
+            completedTasksSection.classList.add('hidden');
+        }
+    }
+        completedTasks.forEach((task, index) => {
+            const taskItem = document.createElement('li');
+            taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'lg:w-[60%]', 'w-[90%]', 'm-auto', 'my-2');
+            
+            const taskText = document.createElement('span');
+            taskText.textContent = task;
+
+            taskText.classList.add('line-through');
+            taskItem.appendChild(taskText);
+    
+            const taskLinks = document.createElement('div');
+            taskLinks.classList.add('task-links');
+            completedTaskDisplay.appendChild(taskItem);
+        })
+
+     
+
 
     const editTask = (index) => {
      const updateTask = prompt ("update your Task", tasks[index]);
@@ -111,7 +142,7 @@ if (StoredTask) {
 
 if(StoredcompletedTasks){
     completedTasks = JSON.parse(StoredcompletedTasks);
-
+  displayCompletedTasks();
 }
 }
 loadTasksFromStorage();
