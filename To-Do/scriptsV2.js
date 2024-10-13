@@ -1,4 +1,5 @@
-let tasks = ["Buy milk","Clean the room","Go to the gym"];
+let tasks = ["Buy milk","Clean the room","Go to the gym,visit my family"];
+
 
 const displayTasks = () => {
     let taskDisplay = document.querySelector('#taskDisplay');
@@ -6,7 +7,7 @@ const displayTasks = () => {
     tasks.forEach((task, index) => {
     const taskItem = document.createElement('li');
     taskItem.classList.add('bg-blue-200', 'p-2', 'm-2', 'rounded-lg','flex','justify-between','list-none');
-    
+    //create the task  title  container
     const taskText = document.createElement('span');
 
     taskText.textContent = task;
@@ -14,11 +15,12 @@ const displayTasks = () => {
 
      const taskLinks = document.createElement('div');
      taskLinks.classList.add('task-links');
-
+    //create update and delete button
      const updateButton = document.createElement('a');
      updateButton.href = '#';
      updateButton.textContent = 'update';
-     updateButton.classList.add('text-blue-500' );
+     updateButton.classList.add('text-blue-500','mr-4' );
+     updateButton.addEventListener('click', () => editTask(index));
      taskLinks.appendChild(updateButton);
 
 
@@ -56,9 +58,18 @@ const addTask = () => {
     }
 }
 
+    const editTask = (index) => {
+     const updateTask = prompt ("update your Task", tasks[index]);
 
-
-
+     if(updateTask && updateTask.trim() !== ""){
+        tasks[index] = updateTask.trim();
+        saveTaskToLocalStorage();
+        displayTasks();
+     }else{
+        alert('please enter a valid task');
+     }
+  }
+ 
 
 
 const deleteTask = (index) => {
@@ -82,4 +93,4 @@ if (taskStored) {
 }
 }
 loadTasksFromStorage();
-// displayTasks();
+ 
